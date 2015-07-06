@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "utils/base.html" %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@
 
 	<ul>
 		{% for event in special_events %}
-			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "level_sign.html" %}</li>
+			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
 		{% endfor %}
 	</ul>
 {% endif %}
@@ -25,7 +25,7 @@
 <ul>
 	{% for event in events %}
 		{% if event.special == False %}
-			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "level_sign.html" %}</li>
+			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
 		{% endif %}
 	{% endfor %}
 </ul>
@@ -45,13 +45,13 @@
 
 {% if special_events %}
 	{% for event in special_events %}
-		{% include "event_special.html" %}
+		{% include "utils/event_special.html" %}
 	{% endfor %}
 {%endif%}
 
 {% for event in events %}
 	{% if event.special == False %}
-		{% include "event.html" %}
+		{% include "utils/event.html" %}
 	{% endif %}
 {% endfor %}
 
