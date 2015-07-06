@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p>{{ greeting }}</p>
+
+	<!-- 150px - сдвиг, чтоб не попасть под плашку темы письма в Inbox
+		Такой же сдвиг также в event.html для якоря ивента
+	-->
+	<a name="events_list" style="position:relative; top:-150px;"></a>
+{% if special_events %}
+	<h3>В цьому дайджесті є #shara@itkpi на:</h3>
+
+	<ul>
+		{% for event in special_events %}
+			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "level_sign.html" %}</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+
+<h2>Список подій:</h2>
+
+<ul>
+	{% for event in events %}
+		{% if event.special == False %}
+			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "level_sign.html" %}</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+
+<p>
+	<font size="1" color="gray">
+		<b>Підказка:</b> символи <span style="color: green">●</span> <span style="color: yellow">▲</span>
+		<span style="color: red">■</span> позначають приблизну складність входження.	
+		<span style="color: green">●</span> - trainee, <span style="color: yellow">▲</span> - junior,
+		<span style="color: red">■</span> - middle.
+	</font>
+</p>
+
+
+
+
+{% if special_events %}
+	{% for event in special_events %}
+		{% include "event_special.html" %}
+	{% endfor %}
+{%endif%}
+
+{% for event in events %}
+	{% if event.special == False %}
+		{% include "event.html" %}
+	{% endif %}
+{% endfor %}
+
+{% endblock %}

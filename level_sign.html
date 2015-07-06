@@ -1,0 +1,7 @@
+{% if event.level == 'TRAINEE' %}
+	<span style="color: green">●</span>
+{% elif event.level == 'JUNIOR' %}
+	<span style="color: yellow">▲</span>
+{% elif event.level == 'MIDDLE' %}
+	<span style="color: red">■</span>
+{% endif %}

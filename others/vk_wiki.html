@@ -1,0 +1,74 @@
+{% if special_events %}
+==== В цьому дайджесті є #shara@itkpi на: ====
+{% for event in special_events %}
+*[[#{{ event.title }}|{{ event.title }}]]
+{% endfor %}
+{% endif %}
+
+==== Список подій: ====
+{% for event in events %}
+{% if event.special == False %}
+*[[#{{ event.title }}|{{ event.title }}]]
+{% endfor %}
+{% endfor %}
+
+
+{% for event in events %}
+
+== {{ event.title }} ==
+
+{{ event.description | safe }}
+
+{{ event.agenda | safe }}
+
+{% if event.speaker %}
+:<b>Спікери: </b> {{ event.speaker | safe }}<br/><br/>
+{% endif %}
+
+{% if event.when %}
+:<b>Дата і час: </b>
+	{{ event.when | date:"d.m D" }}
+
+	{% if event.when_time %}
+	{{ event.when_time | time:"H:i" }}
+	{% endif %}
+
+
+	{% if event.when_end %}
+	–
+	{{ event.when_end | date:"d.m D" }}
+
+	{% if event.when_end_time %}
+	{{ event.when_end_time | time:"H:i" }}
+	{% endif %}
+
+	{% endif %}
+<br/><br/>
+{% endif %}
+
+:<b>Місце: </b>
+{% if event.place|slice:":6" == "Онлайн" %}
+	{% if event.place|slice:"6:8" == " +" %}
+		Онлайн + [https://www.google.com/maps?q={{ event.place|slice:"8:" }}|{{ event.place|slice:"8:" }}]
+	{% else %}
+		{{ event.place | safe }}
+	{% endif %}
+	{% else %}
+		[https://www.google.com/maps?q={{ event.place }}|{{ event.place | safe }}]
+{% endif %}
+
+{% if event.social %}
+	{{ event.social | safe }}
+{% endif %}
+
+:<b>[{{ event.registration | safe }}|Реєстрація]</b>
+
+{% if event.image_url %}
+	<center>[[{{ event.image_url }}|500px|{{ event.registration | safe }}]]</center>
+{% endif %}
+
+[[#Список подій:|До списку подій]]
+
+
+{% endfor %}
+
