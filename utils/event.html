@@ -9,7 +9,7 @@
 
 
 	<p>
-		{{ event.description | safe }}
+		{{ event.social | safe }}
 	</p>
 
 
@@ -18,28 +18,21 @@
 	</p>
 
 
-	{% if event.speaker %}
-	<p>
-		<b>Спікери: </b> {{ event.speaker | safe }}
-	</p>
-	{% endif %}
-
-
-	{% if event.when %}
+	{% if event.when_start %}
 		<p><b>Дата і час: </b>
-			{{ event.when | date:"d.m D" }}
-
-			{% if event.when_time %}	
-			  {{ event.when_time | time:"H:i" }}
+			{% if event.include_time %}
+				{{ event.when_start | date("d.m D H:i") }}
+			{% else %}
+				{{ event.when_start | date("d.m D") }}
 			{% endif %}
 
 
 			{% if event.when_end %}
 			 – 
-			{{ event.when_end | date:"d.m D" }}
-
-			{% if event.when_end_time %}	
-			  {{ event.when_end_time | time:"H:i" }}
+			{% if event.include_time %}
+				{{ event.when_end | date("d.m D H:i") }}
+			{% else %}
+				{{ event.when_end | date("d.m D") }}
 			{% endif %}
 
 			{% endif %}
