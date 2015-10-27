@@ -26,7 +26,7 @@
 				{{ event.when_start | date("d.m D") }}
 			{% endif %}
 
-
+s
 			{% if event.when_end %}
 			 – 
 			{% if event.include_time %}
@@ -42,8 +42,8 @@
 
 	<p>
 		<b>Місце: </b>
-		{% if event.place|slice:":6" == "Онлайн" %}
-			{% if event.place|slice:"6:8" == " +" %}
+		{% if event.place.startswith("Онлайн") %}
+			{% if event.place[6:8] == " +" %}
 				Онлайн + <a href="https://www.google.com/maps?q={{ event.place|slice:"8:" }}">{{ event.place|slice:"8:" }}</a>
 			{% else %}
 				{{ event.place | safe }}
