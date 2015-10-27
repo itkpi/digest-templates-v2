@@ -44,7 +44,7 @@ s
 		<b>Місце: </b>
 		{% if event.place.startswith("Онлайн") %}
 			{% if event.place[6:8] == " +" %}
-				Онлайн + <a href="https://www.google.com/maps?q={{ event.place|slice:"8:" }}">{{ event.place|slice:"8:" }}</a>
+				Онлайн + <a href="https://www.google.com/maps?q={{ event.place|slice(8,None) }}">{{ event.place|slice(8,None) }}</a>
 			{% else %}
 				{{ event.place | safe }}
 			{% endif %}
