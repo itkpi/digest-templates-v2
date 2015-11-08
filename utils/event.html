@@ -20,7 +20,7 @@
 
 	{% if event.when_start %}
 		<p><b>Дата і час: </b>
-			{% if event.include_time %}
+			{% if not event.only_date %}
 				{{ event.when_start | date("%d.%m.%Y %H:%i") }}
 			{% else %}
 				{{ event.when_start | date("%d.%m.%Y") }}
@@ -28,7 +28,7 @@
 
 			{% if event.when_end %}
 			 – 
-			{% if event.include_time %}
+			{% if not event.only_date %}
 				{{ event.when_end | date("%d.%m.%Y %H:%i") }}
 			{% else %}
 				{{ event.when_end | date("%d.%m.%Y") }}
