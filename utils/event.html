@@ -58,11 +58,11 @@
 	</p>
 	{% endif %}
 	<p>
-		<b><a href="{{ event.registration | safe }}">Реєстрація</a></b>
+		<b><a href="{{ event.registration_url | safe }}">Реєстрація</a></b>
 	</p>
 
 	{% if event.image_url %}
-		<center><a href="{{ event.registration | safe }}"><img src="{{ event.image_url }}" alt="image for {{ event.title }}" style="width:500px" /></a></center>
+		<center><a href="{{ event.registration_url | safe }}"><img src="{{ event.image_url }}" alt="image for {{ event.title }}" style="width:500px" /></a></center>
 	{% endif %}
 
 	<p>
