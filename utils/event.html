@@ -34,18 +34,20 @@
 	{% endif %}
 
 
-	<p>
-		<b>Місце: </b>
-		{% if event.place.startswith("Онлайн") %}
-			{% if event.place[6:8] == " +" %}
-				Онлайн + <a href="https://www.google.com/maps?q={{ event.place|slice(8,None) }}">{{ event.place|slice(8,None) }}</a>
+	{% if event.place %}
+		<p>
+			<b>Місце: </b>
+			{% if event.place.startswith("Онлайн") %}
+				{% if event.place[6:8] == " +" %}
+					Онлайн + <a href="https://www.google.com/maps?q={{ event.place|slice(8,None) }}">{{ event.place|slice(8,None) }}</a>
+				{% else %}
+					{{ event.place | safe }}
+				{% endif %}
 			{% else %}
-				{{ event.place | safe }}
+			<a href="https://www.google.com/maps?q={{ event.place }}">{{ event.place | safe }}</a>
 			{% endif %}
-		{% else %}
-		<a href="https://www.google.com/maps?q={{ event.place }}">{{ event.place | safe }}</a>
-		{% endif %}
-	</p>
+		</p>
+	{% endif %}
 
 	{% if event.social %}
 	<p>
