@@ -10,19 +10,16 @@
 		Такой же сдвиг также в event.html для якоря ивента
 	-->
 	<a name="events_list" style="position:relative; top:-150px;"></a>
-{% if special_events %}
-	<h3>В цьому дайджесті є #shara@itkpi на:</h3>
-
-	<ul>
-		{% for event in special_events %}
-			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
-		{% endfor %}
-	</ul>
-{% endif %}
 
 <h2>Список подій:</h2>
 
 <ul>
+	{% if special_events %}
+		{% for event in special_events %}
+			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
+		{% endfor %}
+	{% endif %}
+	
 	{% for event in events %}
 		{% if event.special == False %}
 			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
