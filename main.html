@@ -25,20 +25,14 @@
 			<li><a href="#event{{event.id}}">{{ event.title | safe }}</a> {% include "utils/level_sign.html" %}</li>
 		{% endif %}
 	{% endfor %}
-</ul>
-
-
-<p>
 	<font size="1" color="gray">
 		<b>Підказка:</b> символи <span style="color: green">●</span> <span style="color: yellow">▲</span>
 		<span style="color: red">■</span> позначають приблизну складність входження.	
 		<span style="color: green">●</span> - trainee, <span style="color: yellow">▲</span> - junior,
 		<span style="color: red">■</span> - middle.
 	</font>
-</p>
-
-
-
+	<br><a href="http:itkpi.pp.ua/events">Більше подій <b>на сайті</b></a> 
+</ul>
 
 {% if special_events %}
 	{% for event in special_events %}
